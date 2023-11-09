@@ -1,0 +1,59 @@
+{% extends "todo/base.html" %}
+{% block title %} Home {% endblock %}
+{% block content %}
+<div style="display: flex;">
+
+    <!-- Todo List on the left -->
+    <div style="flex: 1; margin-right: 20px;">
+        <h2 style="font-size: 24px; text-align: center;">Todo</h2>
+        <ul style="list-style-type: none; padding: 0;">
+            {% for todo in todos %}
+            <div style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px;">
+                {% if todo.completed %}
+                <li style="font-size: 18px; margin:5px; text-decoration: line-through;">
+                    {{ todo.title }} - {{ todo.description }}
+                </li>
+                {% else %}
+                <li style="font-size: 18px; margin:5px;">
+                    {{ todo.title }} - {{ todo.description }}
+                </li>
+                {% endif %}
+                <li style="display: flex; gap: 10px;">
+                    <form method="post" action="{% url 'delete' todo.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                    <form method="POST" action="{% url 'update' todo.id %}">
+                        {% csrf_token %}
+                        {% if todo.completed %}
+                        <button type="submit" class="btn btn-info">Not Completed</button>
+                        {% else %}
+                        <button type="submit" class="btn btn-info">Completed</button>
+                        {% endif %}
+                    </form>
+                </li>
+            </div>
+
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- Add Todo Form on the right -->
+    <div
+        style="flex: 1; background-color: #f4f4f4; padding: 20px; border-radius: 20px; display: flex; flex-direction: column; align-items: center;">
+        <h2 style="text-align: center; font-size: 24px;">Add Todo</h2>
+        <form method="post" action="{% url 'index' %}" style="width: 100%; max-width: 400px;">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="mb-3">
+                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                {{ field }}
+            </div>
+            {% endfor %}
+            <button
+                style="color: white; padding: 10px; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px;"
+                type="submit" class="btn btn-primary">Add Todo</button>
+        </form>
+    </div>
+
+</div>
+{% endblock %}

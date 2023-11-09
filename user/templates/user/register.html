@@ -1,0 +1,41 @@
+{% extends "user/base.html" %}
+
+{% block title %} Register {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Register</h2>
+                    <form method="POST" action="{% url 'register' %}">
+
+                        {% csrf_token %}
+
+                        {% for field in form %}
+                        <div class="mb-3">
+                            {{ field.label }}
+                            {{ field }}
+                            {% if field.name == 'username' %}
+                                {% for error in field.errors %}
+                                    <small class="text-danger">{{ error }}</small>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+
+                        {% if form.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                Oops! Something went wrong. Please check the form for errors.
+                            </div>
+                        {% endif %}
+
+                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
