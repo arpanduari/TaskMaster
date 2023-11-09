@@ -39,6 +39,6 @@ Contributions are welcome! If you find any issues or want to enhance TaskMaster,
 - [Django](https://www.djangoproject.com/) for the powerful web framework.
 
   
-![Nothing](Screenshot from 2023-11-10 04-54-20.png)
-![Nothing2](Screenshot from 2023-11-10 04-54-51.png)
-![Nothing3](Screenshot from 2023-11-10 04-58-33.png)
+![Nothing](https://github.com/arpanduari/TaskMaster/blob/5806edf7970be2a4ea3d7bda63e64f4503c3e180/Screenshot%20from%202023-11-10%2004-54-20.png)
+![Nothing2](https://github.com/arpanduari/TaskMaster/blob/5806edf7970be2a4ea3d7bda63e64f4503c3e180/Screenshot%20from%202023-11-10%2004-54-51.png)
+![Nothing3](https://github.com/arpanduari/TaskMaster/blob/5806edf7970be2a4ea3d7bda63e64f4503c3e180/Screenshot%20from%202023-11-10%2004-58-33.png)
